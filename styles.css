@@ -70,12 +70,13 @@ a {
   margin-bottom: 32px;
 }
 
-.logo {
-  font-family: var(--font-serif);
-  font-weight: 500;
-  font-size: 28px;
+.avatar {
+  display: block;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
   margin: 0 0 20px 0;
-  color: var(--text);
 }
 
 .roles {
@@ -141,15 +142,15 @@ a {
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column;
-  gap: 18px;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
 }
 
 .social-links a {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 14px;
+  justify-content: center;
   color: var(--text-muted);
   transition: color 0.15s ease;
 }
@@ -159,8 +160,8 @@ a {
 }
 
 .social-links svg {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
 }
 
 /* Content */
@@ -175,18 +176,36 @@ a {
   max-width: 480px;
 }
 
-.headline {
+.bio-section {
+  max-width: 920px;
+  margin-bottom: 48px;
+}
+
+.bio-columns {
+  column-count: 2;
+  column-gap: 48px;
+}
+
+.bio-columns p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin: 0 0 18px 0;
+}
+
+.headline,
+.article-title {
   font-family: var(--font-serif);
   font-weight: 500;
-  font-size: 42px;
-  margin: 0 0 28px 0;
+  font-size: 34px;
+  line-height: 1.2;
+  margin: 0 0 16px 0;
   color: var(--text);
-  line-height: 1.15;
 }
 
 .intro {
-  font-size: 15px;
-  line-height: 1.8;
+  font-size: 14px;
+  line-height: 1.7;
   color: var(--text-muted);
   margin: 0 0 18px 0;
 }
@@ -196,7 +215,7 @@ a {
 }
 
 .label {
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-faint);
@@ -246,13 +265,15 @@ a {
 }
 
 .current-title {
-  font-size: 15px;
+  font-family: var(--font-serif);
+  font-size: 17px;
   font-weight: 600;
   color: var(--text);
 }
 
 .current-desc {
-  font-size: 13px;
+  font-size: 14px;
+  line-height: 1.7;
   color: var(--text-muted);
 }
 
@@ -275,7 +296,7 @@ a {
 }
 
 .updated {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text-faint);
   margin: 48px 0 0 0;
 }
@@ -285,6 +306,10 @@ a {
 @media (max-width: 860px) {
   .content {
     padding: 64px 40px;
+  }
+
+  .bio-columns {
+    column-count: 1;
   }
 }
 
@@ -312,19 +337,9 @@ a {
     margin-top: 32px;
   }
 
-  .social-links {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 16px 24px;
-  }
-
   .content {
     margin-left: 0;
     padding: 48px 28px;
-  }
-
-  .headline {
-    font-size: 34px;
   }
 }
 
@@ -358,17 +373,8 @@ a {
   padding: 64px 64px;
 }
 
-.article-title {
-  font-family: var(--font-serif);
-  font-weight: 500;
-  font-size: 28px;
-  line-height: 1.2;
-  margin: 0 0 14px 0;
-  color: var(--text);
-}
-
 .article-subtitle {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.7;
   color: var(--text-muted);
   max-width: 640px;
@@ -405,8 +411,8 @@ a {
 }
 
 .section-body {
-  font-size: 13px;
-  line-height: 1.8;
+  font-size: 14px;
+  line-height: 1.7;
   color: var(--text-muted);
   margin: 0;
   max-width: 720px;
@@ -424,7 +430,7 @@ a {
 .section-list li {
   position: relative;
   padding-left: 18px;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.7;
   color: var(--text-muted);
   max-width: 720px;
@@ -457,10 +463,6 @@ a {
 
 .building-page {
   max-width: 1120px;
-}
-
-.building-title {
-  font-size: 34px;
 }
 
 .building-grid {
@@ -506,8 +508,9 @@ a {
 
 .card-title {
   font-family: var(--font-serif);
-  font-weight: 500;
-  font-size: 18px;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.3;
   margin: 0;
   color: var(--text);
 }
@@ -532,7 +535,7 @@ a {
 }
 
 .card-desc {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.7;
   color: var(--text-muted);
   margin: 0;
@@ -668,13 +671,13 @@ a {
 .current-book-title {
   font-family: var(--font-serif);
   font-weight: 500;
-  font-size: 22px;
+  font-size: 19px;
   margin: 0;
   color: var(--text);
 }
 
 .current-book-author {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text-muted);
   margin: 0;
 }
@@ -724,8 +727,8 @@ a {
 }
 
 .current-book-why p {
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.7;
   color: var(--text-muted);
   margin: 0;
 }
@@ -797,9 +800,9 @@ a {
 
 .finished-info h4 {
   font-family: var(--font-serif);
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 1.25;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.3;
   margin: 0;
   color: var(--text);
 }
@@ -814,7 +817,7 @@ a {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-faint);
   margin: 4px 0 0 0;
 }
@@ -831,7 +834,7 @@ a {
 .tbr-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: 14px;
   white-space: nowrap;
 }
 
@@ -1085,10 +1088,6 @@ a {
   margin: 0;
 }
 
-.learning-card .card-title {
-  font-size: 19px;
-  line-height: 1.3;
-}
 
 .card-footer {
   display: flex;
@@ -1128,5 +1127,96 @@ a {
   .learning-tabs {
     flex-wrap: wrap;
     gap: 16px 20px;
+  }
+}
+
+/* Writing page */
+
+.writing-year-group {
+  margin-top: 36px;
+}
+
+.writing-year-group:first-of-type {
+  margin-top: 32px;
+}
+
+.writing-year {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 8px 0;
+}
+
+.writing-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 300px 90px;
+  gap: 24px;
+  align-items: start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.writing-date {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding-top: 4px;
+}
+
+.writing-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--text);
+  margin: 0;
+  transition: color 0.15s ease;
+}
+
+.writing-row:hover .writing-title {
+  color: var(--accent-green);
+}
+
+.writing-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin: 0;
+  padding-top: 4px;
+}
+
+.writing-time {
+  font-size: 12px;
+  color: var(--text-faint);
+  text-align: right;
+  padding-top: 4px;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .writing-row {
+    grid-template-columns: 70px 1fr;
+  }
+
+  .writing-desc {
+    grid-column: 2 / 3;
+    margin-top: -4px;
+  }
+
+  .writing-time {
+    grid-column: 2 / 3;
+    text-align: left;
+    margin-top: -4px;
+  }
+}
+
+@media (max-width: 600px) {
+  .writing-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .writing-desc,
+  .writing-time {
+    grid-column: 1;
+    text-align: left;
   }
 }
