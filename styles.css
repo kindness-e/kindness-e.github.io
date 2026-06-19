@@ -448,6 +448,10 @@ a {
 }
 
 @media (max-width: 768px) {
+  .layout-article {
+    flex-direction: column;
+  }
+
   .article-row {
     margin-left: 0;
     flex-direction: column;
