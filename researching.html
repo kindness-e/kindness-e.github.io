@@ -29,10 +29,10 @@
     <nav class="nav">
       <a href="index.html" class="nav-item">About</a>
       <a href="researching.html" class="nav-item is-active"><span class="dot"></span>Researching</a>
-      <a href="building.html" class="nav-item">Building</a>
-      <a href="reading.html" class="nav-item">Reading</a>
-      <a href="learning.html" class="nav-item">Learning</a>
       <a href="writing.html" class="nav-item">Writing</a>
+      <a href="building.html" class="nav-item">Building</a>
+      <a href="learning.html" class="nav-item">Learning</a>
+      <a href="reading.html" class="nav-item">Reading</a>
     </nav>
 
     <div class="sidebar-bottom">
@@ -64,20 +64,28 @@
 
   <div class="article-row">
     <main class="article">
-      <h2 class="article-title">AI Agent Memory Systems</h2>
-      <p class="article-subtitle">Exploring how agents can store, retrieve, and leverage information over long time horizons.</p>
+      <h2 class="article-title">Empirical Trust-Signal Reward Hacking in Multi-Agent RL</h2>
+      <p class="article-subtitle">Investigating whether RL agents rewarded on imperfect trust signals become trustworthy or learn to exploit the metric.</p>
 
       <div class="meta">
         <p><span class="meta-label">Status:</span> <span class="status-active">Active Research</span></p>
-        <p><span class="meta-label">Started:</span> May 12, 2026</p>
-        <p><span class="meta-label">Last Updated:</span> June 3, 2026</p>
+        <p><span class="meta-label">Started:</span> June 19, 2026</p>
+        <p><span class="meta-label">Last Updated:</span> July 3, 2026</p>
       </div>
 
       <hr class="divider" />
 
       <section id="overview">
         <h3 class="section-heading">Overview</h3>
-        <p class="section-body">For agents to be genuinely useful, they need memory. Not just short-term context windows, but persistent, structured, and searchable memory that grows over time. This research explores architectures, retrieval strategies, and evaluation methods for long-term agent memory.</p>
+        <p class="section-body">Reinforcement learning systems are often optimized against proxy objectives rather than the underlying goals designers actually care about. This creates opportunities for reward hacking, where agents maximize rewards without achieving the intended outcome.</p>
+        <p class="section-body">This research investigates whether agents rewarded on imperfect trust signals learn genuinely trust-building behaviour or learn to exploit discrepancies between latent trust and observable trust metrics. Trust serves as a controlled experimental setting for studying broader alignment failures caused by proxy rewards.</p>
+      </section>
+
+      <hr class="divider" />
+
+      <section id="research-question">
+        <h3 class="section-heading">Research Question</h3>
+        <p class="section-body">Can reinforcement learning agents learn to manipulate trust metrics instead of becoming trustworthy when rewarded on imperfect trust signals?</p>
       </section>
 
       <hr class="divider" />
@@ -85,11 +93,12 @@
       <section id="key-questions">
         <h3 class="section-heading">Key Questions</h3>
         <ul class="section-list">
-          <li>What types of memory should agents have?</li>
-          <li>How do we structure and retrieve memories effectively?</li>
-          <li>How do we prevent forgetting while avoiding noise?</li>
-          <li>How can memory be shared across agents safely?</li>
-          <li>How do we evaluate memory quality and usefulness?</li>
+          <li>Under what conditions do agents exploit trust metrics rather than increase underlying trust?</li>
+          <li>How large must the gap between latent trust and reported trust be before exploitation emerges?</li>
+          <li>Does reward hacking emerge gradually or as an abrupt behavioural transition?</li>
+          <li>How does increasing agent capability affect the likelihood of exploitation?</li>
+          <li>Can reward design or regularization reduce proxy exploitation?</li>
+          <li>Are some trust-reporting mechanisms more robust to manipulation than others?</li>
         </ul>
       </section>
 
@@ -98,9 +107,10 @@
       <section id="current-hypotheses">
         <h3 class="section-heading">Current Hypotheses</h3>
         <ul class="section-list">
-          <li>A hybrid approach (vector + graph + key-value) is optimal.</li>
-          <li>Importance scoring &gt; recency for long-term usefulness.</li>
-          <li>Agents need consolidation, not just storage.</li>
+          <li><strong>H1: Proxy Exploitation</strong> &mdash; Agents rewarded on imperfect trust signals will learn policies that maximize reported trust without necessarily increasing underlying trust.</li>
+          <li><strong>H2: Capability Thresholds</strong> &mdash; Reward hacking will become more pronounced as agent capability increases.</li>
+          <li><strong>H3: Phase Transition Behaviour</strong> &mdash; Exploitation will emerge abruptly after crossing a capability threshold rather than appearing gradually.</li>
+          <li><strong>H4: Robust Signals</strong> &mdash; Trust metrics incorporating longer historical context will be harder to exploit than heavily recency-weighted signals.</li>
         </ul>
       </section>
 
@@ -109,9 +119,32 @@
       <section id="approach">
         <h3 class="section-heading">Approach</h3>
         <ul class="section-list">
-          <li>Prototype a hybrid vector + graph + key-value store.</li>
-          <li>Test importance scoring against simple recency baselines.</li>
-          <li>Run agents on long-horizon tasks and measure recall accuracy.</li>
+          <li>Construct a multi-agent environment containing a latent trust state, a reported trust signal, and controllable reporting bias.</li>
+          <li>Train agents using PPO.</li>
+          <li>Compare latent trust trajectories against reported trust trajectories.</li>
+          <li>Measure divergence between genuine trust-building and reward-maximizing behaviour.</li>
+          <li>Evaluate different levels of reporting bias and agent capability.</li>
+        </ul>
+      </section>
+
+      <hr class="divider" />
+
+      <section id="experimental-variables">
+        <h3 class="section-heading">Experimental Variables</h3>
+        <p class="section-body"><strong>Independent Variables</strong></p>
+        <ul class="section-list">
+          <li>Degree of reporting bias</li>
+          <li>Trust signal design</li>
+          <li>Agent capability</li>
+          <li>Training duration</li>
+        </ul>
+        <p class="section-body"><strong>Dependent Variables</strong></p>
+        <ul class="section-list">
+          <li>Latent trust</li>
+          <li>Reported trust</li>
+          <li>Reward obtained</li>
+          <li>Trust-report divergence</li>
+          <li>Emergence point of exploitative behaviour</li>
         </ul>
       </section>
 
@@ -120,9 +153,9 @@
       <section id="notes-ideas">
         <h3 class="section-heading">Notes &amp; Ideas</h3>
         <ul class="section-list">
-          <li>Memory consolidation might borrow from spaced repetition.</li>
-          <li>Could agents share a memory layer the way humans share institutional knowledge?</li>
-          <li>Worth exploring forgetting curves as a deliberate compression mechanism.</li>
+          <li>Trust signals resemble many real-world feedback systems, including ratings, reputation scores, and human preference signals.</li>
+          <li>Reward hacking may initially appear beneficial because reported trust continues increasing while latent trust deteriorates.</li>
+          <li>The divergence between latent and reported trust may serve as an early warning signal for alignment failures.</li>
         </ul>
       </section>
 
@@ -131,20 +164,25 @@
       <section id="open-problems">
         <h3 class="section-heading">Open Problems</h3>
         <ul class="section-list">
-          <li>No standard benchmark for long-term agent memory yet.</li>
-          <li>Balancing recall precision with retrieval latency at scale.</li>
-          <li>Privacy and access control when memory is shared across agents.</li>
+          <li>How should latent trust be modeled realistically?</li>
+          <li>How can exploitation be distinguished from strategic cooperation?</li>
+          <li>What metrics best quantify trust-report divergence?</li>
+          <li>Are observed behaviours specific to trust environments or representative of proxy optimization more generally?</li>
         </ul>
       </section>
 
       <hr class="divider" />
 
-      <section id="references">
-        <h3 class="section-heading">References</h3>
+      <section id="related-work">
+        <h3 class="section-heading">Related Work</h3>
         <ul class="section-list section-list--refs">
-          <li>Park et al., &ldquo;Generative Agents: Interactive Simulacra of Human Behavior&rdquo; (2023)</li>
-          <li>Packer et al., &ldquo;MemGPT: Towards LLMs as Operating Systems&rdquo; (2023)</li>
-          <li>Zhong et al., &ldquo;MemoryBank: Enhancing LLMs with Long-Term Memory&rdquo; (2023)</li>
+          <li>Reinforcement Learning</li>
+          <li>AI Alignment</li>
+          <li>Reward Hacking</li>
+          <li>Specification Gaming</li>
+          <li>Pan et al. on reward hacking and capability-driven policy shifts</li>
+          <li>Deceptive Alignment</li>
+          <li>Multi-agent reinforcement learning literature</li>
         </ul>
       </section>
     </main>
